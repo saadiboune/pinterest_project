@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title parent() ~ '|List' %}
+{#{% block title %} {{ parent() }} | List {% endblock %}#}
+{#<!doctype html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport"#}
+{#          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+{#    <meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+{#    <title>Pins</title>#}
+{#</head>#}
+{#<body>#}
+
+{% block body %}
+    <h2>Pins list</h2>
+    <a href="{{ path('app_pin_create') }}">create pin</a>
+    {#{% if pins|length > 0 %}#}
+    {% for pin in pins %}
+        <article>
+            <h1><a href="{{ path('app_pin_details', {'id': pin.id}) }}">{{ pin.title }}</a></h1>
+            <p>{{ pin.description }}</p>
+        </article>
+    {% else %}
+        <p>Sorry, no pins yet !</p>
+    {% endfor %}
+{% endblock %}
+
+{#</body>#}
+{#</html>#}
